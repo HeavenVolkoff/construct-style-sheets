@@ -1,11 +1,5 @@
 import {adoptedSheetsRegistry, frame, OldCSSStyleSheet} from './shared';
-
-export function instanceOfStyleSheet(instance) {
-  return (
-    instance instanceof OldCSSStyleSheet ||
-    instance instanceof frame.CSSStyleSheet
-  );
-}
+import { instanceOfStyleSheet } from './ConstructStyleSheet';
 
 export function checkAndPrepare(sheets, container) {
   const locationType = container === document ? 'Document' : 'ShadowRoot';
