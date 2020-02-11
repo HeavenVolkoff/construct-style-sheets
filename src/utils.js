@@ -1,16 +1,17 @@
-import {adoptedSheetsRegistry, frame, OldCSSStyleSheet} from './shared';
-import { instanceOfStyleSheet } from './ConstructStyleSheet';
+import {adoptedSheetsRegistry} from './shared';
 
 export function checkAndPrepare(sheets, container) {
   const locationType = container === document ? 'Document' : 'ShadowRoot';
 
   if (!Array.isArray(sheets)) {
+    // document.adoptedStyleSheets = new CSSStyleSheet();
     throw new TypeError(
       `Failed to set the 'adoptedStyleSheets' property on ${locationType}: Iterator getter is not callable.`,
     );
   }
 
-  if (!sheets.every(instanceOfStyleSheet)) {
+  if (!sheets.every(s => (s instanceof CSSStyleSheet))) {
+    // document.adoptedStyleSheets = [document.styleSheets[0]];
     throw new TypeError(
       `Failed to set the 'adoptedStyleSheets' property on ${locationType}: Failed to convert value to 'CSSStyleSheet'`,
     );

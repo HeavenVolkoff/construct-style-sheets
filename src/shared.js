@@ -41,5 +41,3 @@ export const frame = {
   // from the main window class.
   CSSStyleSheet: null,
 };
-
-export const OldCSSStyleSheet = CSSStyleSheet;
