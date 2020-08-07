@@ -66,6 +66,10 @@ class ConstructStyleSheet {
     });
   }
 
+  get rules() {
+    return this.cssRules
+  }
+
   get cssRules() {
     if (!sheetMetadataRegistry.has(this)) {
       // CSSStyleSheet.prototype.cssRules;
